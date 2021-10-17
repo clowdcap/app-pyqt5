@@ -123,7 +123,7 @@
     <item row="4" column="1">
      <widget class="QPushButton" name="btn_voltar">
       <property name="text">
-       <string>VOLTAR</string>
+       <string>DESLOGAR</string>
       </property>
      </widget>
     </item>

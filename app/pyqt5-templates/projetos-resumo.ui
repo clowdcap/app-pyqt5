@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>380</width>
-    <height>608</height>
+    <width>367</width>
+    <height>515</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -81,7 +81,7 @@
        </widget>
       </item>
       <item>
-       <widget class="QPushButton" name="pushButton_6">
+       <widget class="QPushButton" name="btn_voltar">
         <property name="minimumSize">
          <size>
           <width>45</width>
@@ -125,7 +125,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>380</width>
+     <width>367</width>
      <height>21</height>
     </rect>
    </property>

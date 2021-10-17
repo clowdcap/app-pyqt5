@@ -10,9 +10,13 @@ class SistemaGeral:
         self.tela_login = uic.loadUi('./pyqt5-templates/login.ui')
         self.tela_geral = uic.loadUi('./pyqt5-templates/geral.ui')
         self.tela_projetos = uic.loadUi('./pyqt5-templates/projetos.ui')
+        self.tela_email = uic.loadUi('./pyqt5-templates/email.ui')
+        self.tela_calculo = uic.loadUi('./pyqt5-templates/calculo.ui')
+
+        # Layouts's Projetos        
         self.tela_projetos_resumo = uic.loadUi('./pyqt5-templates/projetos-resumo.ui')
-        
-        
+
+
         # Executar funções ao chamar
         ### TELA LOGIN BOTOES
         self.tela_login.btn_login.clicked.connect(self.logar_login) # botao logar
@@ -34,21 +38,29 @@ class SistemaGeral:
         self.tela_projetos.btn_entrega.clicked.connect(self.entrega_projetos) # botao entrega
         self.tela_projetos.btn_voltar.clicked.connect(self.voltar_projetos) # botao voltar
         
+        ### TELA RESUMO
+        self.tela_projetos_resumo.btn_voltar.clicked.connect(self.voltar_projetos_resumo) # botao voltar
+
+        ### TELA E-MAIL
+        self.tela_email.btn_voltar.clicked.connect(self.voltar_email) # botao voltar
         
-        # mostrar layout
+        ### TELA CALCULO
+        self.tela_calculo.btn_voltar.clicked.connect(self.voltar_calculo) # botao voltar
+
+        # Mostrar layout
         self.tela_login.show()
 
-        # executar sistema
+        # Executar sistema
         app.exec_()
         
     
-    ### LOGIN 
+    ### LOGIN
     def logar_login(self):
         login = self.tela_login.input_login.text()
         senha = self.tela_login.input_senha.text()
         print(f'Login: {login}\nSenha: {senha}')
         
-        if login == '1' and senha == '1':
+        if login == '' and senha == '':
             print('Login Autorizado')
             self.tela_login.close()
             self.tela_geral.show()
@@ -67,12 +79,16 @@ class SistemaGeral:
         
     def email_geral(self):
         print('Email')
+        self.tela_geral.close()
+        self.tela_email.show()
         
     def calculo_geral(self):
         print('Calculo de Estatistica')
+        self.tela_geral.close()
+        self.tela_calculo.show()
         
     def voltar_geral(self):
-        print('Voltar')
+        print('Deslogar')
         self.tela_geral.close()
         self.tela_login.show()
 
@@ -100,5 +116,26 @@ class SistemaGeral:
         self.tela_projetos.close()
         self.tela_geral.show()
 
+
+    ### PROJETO - RESUMO
+    def voltar_projetos_resumo(self):
+        print('Voltar')
+        self.tela_projetos_resumo.close()
+        self.tela_projetos.show()
+
+
+    ### EMAIL
+    def voltar_email(self):
+        print('Voltar')
+        self.tela_email.close()
+        self.tela_geral.show()
+
+
+    ### CALCULO
+    def voltar_calculo(self):
+        print('Voltar')
+        self.tela_calculo.close()
+        self.tela_geral.show()
+
+
 SistemaGeral()
- 
