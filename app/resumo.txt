@@ -1,0 +1,43 @@
+'''
+
+SISTEMA DE GERENCIAMENTO DE PROJETOS
+
+User
+- Proprietario
+
+Protocolo
+- Guia Amarela
+
+CATEGORIAS DE PROJETO: (SITUAÇÃO)
+    - ENTREGUE
+    - APROVADO
+    - ANALISE
+    - ASSINAR
+    - REPROVADO
+    - FORA
+
+
+
+
+APLICATIVO PYQT5
+
+login
+-----
+menu-inicial
+    - opções:
+        - Projetos
+            - Resumo
+            - Ver categorias / Situação
+            - Cadastrar e Deletar (Edit)
+            - Ver anteriores
+            - Anteriores
+            - Entregas
+            
+        - Email
+            - Carimbo
+            - E-mail Personalizado
+            
+        - Calculo Estatisticas
+            - Calculo
+            
+'''
