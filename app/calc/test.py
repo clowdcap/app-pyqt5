@@ -1,9 +1,7 @@
 ## TESTE A APLICAÇÃO AQUI
-
 from openpyxl import Workbook
-import datetime
-
-
+import datetime 
+from datetime import date
 
 # Setup inicial
 # __init__
@@ -16,7 +14,6 @@ planilha1['B2'] = 'Descrição'
 planilha1['C2'] = 'Dado'
 planilha1['A1'] = 'Registro:'
 planilha1['B1'] = datetime.datetime.now()
-
 
 area_do_terreno = 1000
 area_anteriormente_construido = 0
@@ -98,7 +95,12 @@ planilha1['D22'] = 'M²' # 20
 planilha1['D23'] = '' # 21
 planilha1['D24'] = 'M²' # 22
 planilha1['D25'] = 'M²' # 23
+numero_do_protocolo = '1234/2021'
+interessado_projeto = 'Aole'
+planilha1['C1'] = f'Protocolo {numero_do_protocolo}'
+planilha1['D1'] = f'Interessado {interessado_projeto}'
 
 
-
-arquivo_excel.save("teste.xlsx")
+data_atual = date.today()
+print(data_atual)
+arquivo_excel.save(fr"E:\python\app-pyqt5\app\calc\relatorios\relatorio-{data_atual}.xlsx")

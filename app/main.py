@@ -1,6 +1,6 @@
 from PyQt5 import uic, QtWidgets
-from openpyxl import Workbook
-import datetime
+
+from datetime import date, datetime
 
 class SistemaGeral:
     def __init__(self):
@@ -17,6 +17,8 @@ class SistemaGeral:
 
         # Layouts's Projetos        
         self.tela_projetos_resumo = uic.loadUi('./pyqt5-templates/projetos-resumo.ui')
+
+        
 
 
         # Executar funções ao chamar
@@ -60,10 +62,12 @@ class SistemaGeral:
     
     ### LOGIN
     def logar_login(self):
+        # Coleta dados dos input
         login = self.tela_login.input_login.text()
         senha = self.tela_login.input_senha.text()
         print(f'Login: {login}\nSenha: {senha}')
         
+        # Conferencia do login e senha
         if login == '' and senha == '':
             print('Login Autorizado')
             self.tela_login.close()
@@ -78,21 +82,28 @@ class SistemaGeral:
     ### GERAL         
     def projetos_geral(self):
         print('Projetos')
+        # Fecha Geral e abre Projetos
         self.tela_geral.close()
         self.tela_projetos.show()
         
     def email_geral(self):
         print('Email')
+
+        # Fecha Geral e abre Email
         self.tela_geral.close()
         self.tela_email.show()
         
     def calculo_geral(self):
         print('Calculo de Estatistica')
+
+        # Fecha Geral e abre Calculo
         self.tela_geral.close()
         self.tela_calculo.show()
         
     def voltar_geral(self):
         print('Deslogar')
+
+        # Fecha Geral e abre Login
         self.tela_geral.close()
         self.tela_login.show()
 
@@ -100,6 +111,8 @@ class SistemaGeral:
     ### PROJETOS
     def resumo_projetos(self):
         print('Resumo')
+
+        # Fecha Projetos e abre Resumo
         self.tela_projetos.close()
         self.tela_projetos_resumo.show()
 
@@ -114,9 +127,12 @@ class SistemaGeral:
 
     def entrega_projetos(self):
         print('Entrega')
-        
+    
+   
     def voltar_projetos(self):
         print('Voltar')
+
+        # Fecha Projetos e abre Geral
         self.tela_projetos.close()
         self.tela_geral.show()
 
@@ -124,6 +140,8 @@ class SistemaGeral:
     ### PROJETO - RESUMO
     def voltar_projetos_resumo(self):
         print('Voltar')
+
+        # Fecha Resumo e abre Projeto
         self.tela_projetos_resumo.close()
         self.tela_projetos.show()
 
@@ -131,27 +149,25 @@ class SistemaGeral:
     ### EMAIL
     def voltar_email(self):
         print('Voltar')
+
+        # Fecha Email e abre Geral
         self.tela_email.close()
         self.tela_geral.show()
 
 
     ### CALCULO
     def calcular_calculo(self):
+        from openpyxl import Workbook
         print('Calcular')
 
         # Setup inicial
         # __init__
         arquivo_excel = Workbook()
         planilha1 = arquivo_excel.active
+        data_atual = date.today()
 
-        # Colunas
-        planilha1['A2'] = 'Item'
-        planilha1['B2'] = 'Descrição'
-        planilha1['C2'] = 'Dado'
-        planilha1['D2'] = 'Unidade'
-        planilha1['A1'] = 'Registro:'
-        planilha1['B1'] = datetime.datetime.now()
         
+        # Coleta dados dos input e arnazena em variáveis
         area_do_terreno = float(self.tela_calculo.input_area_do_terreno.text())
         area_anteriormente_construido = float(self.tela_calculo.input_area_anteriormente_construido.text())
         area_computavel_subsolo = float(self.tela_calculo.input_area_computavel_a_construir_no_subsolo.text())
@@ -166,7 +182,7 @@ class SistemaGeral:
         altura_total = float(self.tela_calculo.input_altura_total.text())
         area_de_cobertura = float(self.tela_calculo.input_area_de_cobertura.text())
         
-        # Gerando calculos
+        # Usando variaveis coletados acima, gerar calculos
         projecao_edificacao = area_anteriormente_construido + area_computavel_terreo + area_nao_computavel_terreo
         taxa_ocupacao = (projecao_edificacao / area_do_terreno) * 100 
         taxa_permeabilidade = (area_livre / area_do_terreno) * 100
@@ -178,6 +194,7 @@ class SistemaGeral:
         coeficiente_aproveitamento = ((area_total_contruir_computavel + area_anteriormente_construido)/area_do_terreno)
         area_total_construida_liberada = area_total_contruir_computavel + area_total_contruir_nao_computavel
 
+        # Condicionantes para calculo
         if area_computavel_subsolo == 0 and area_nao_computavel_subsolo == 0:
             if numero_de_pavimento < 0 or numero_de_pavimento > 2:
                 print('Numero de pavimentos fora do permitido')
@@ -185,6 +202,7 @@ class SistemaGeral:
         if area_de_cobertura < (area_de_cobertura*0.9):
             print('Rever tamanho da cobertura')
 
+        # Organizar dados coletados e resultados dos calculos em dicionário
         dicionario_com_resultado = {
             'Area do terreno': area_do_terreno,
             'Area anteriormente construido' : area_anteriormente_construido,
@@ -211,12 +229,29 @@ class SistemaGeral:
             'Area total construida liberada': area_total_construida_liberada
         }
 
+        # Coletando dados input do protocolo e do interessado
+        numero_do_protocolo = self.tela_calculo.input_protocolo.text()
+        interessado_projeto = self.tela_calculo.input_interessado.text()
+
+        
+        # Colunas
+        planilha1['A2'] = 'Item'
+        planilha1['B2'] = 'Descrição'
+        planilha1['C2'] = 'Dado'
+        planilha1['D2'] = 'Unidade'
+        planilha1['A1'] = 'Registro:'
+        planilha1['B1'] = data_atual
+        planilha1['C1'] = f'Protocolo {numero_do_protocolo}'
+        planilha1['D1'] = f'Interessado {interessado_projeto}'
+        
+        
+        # Passar por todos os dados do dicionarios e adicionar em linhas na planilha
         for item, descricao in enumerate(dicionario_com_resultado):
             linha = (item+1, descricao, dicionario_com_resultado[descricao])
             planilha1.append(linha)
-        
+
         # Retornando dados
-        # Colocando unidades nos resultados
+        # Colocando unidades nas linhas
         planilha1['D3'] = 'M²' # 1
         planilha1['D4'] = 'M²' # 2
         planilha1['D5'] = 'M²' # 3
@@ -240,9 +275,11 @@ class SistemaGeral:
         planilha1['D23'] = '' # 21
         planilha1['D24'] = 'M²' # 22
         planilha1['D25'] = 'M²' # 23
-        
+
+
         try:
-            arquivo_excel.save("teste.xlsx")
+            #
+            arquivo_excel.save(f"./calc/relatorios/relatorio-{numero_do_protocolo}.xlsx")
             print('Relatorio gerado com sucesso')
         except:
             print("Erro ao salvar o Relatório.")
