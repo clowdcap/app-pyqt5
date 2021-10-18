@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>371</width>
-    <height>985</height>
+    <height>1021</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -76,7 +76,7 @@
        </widget>
       </item>
       <item>
-       <widget class="QLineEdit" name="lineEdit">
+       <widget class="QLineEdit" name="input_area_do_terreno">
         <property name="minimumSize">
          <size>
           <width>0</width>
@@ -103,7 +103,7 @@
        </widget>
       </item>
       <item>
-       <widget class="QLineEdit" name="lineEdit_2">
+       <widget class="QLineEdit" name="input_area_anteriormente_construido">
         <property name="minimumSize">
          <size>
           <width>0</width>
@@ -130,7 +130,7 @@
        </widget>
       </item>
       <item>
-       <widget class="QLineEdit" name="lineEdit_3">
+       <widget class="QLineEdit" name="input_area_computavel_a_construir_no_subsolo">
         <property name="minimumSize">
          <size>
           <width>0</width>
@@ -157,7 +157,7 @@
        </widget>
       </item>
       <item>
-       <widget class="QLineEdit" name="lineEdit_4">
+       <widget class="QLineEdit" name="input_area_nao_computavel_a_construir_no_subsolo">
         <property name="minimumSize">
          <size>
           <width>0</width>
@@ -184,7 +184,7 @@
        </widget>
       </item>
       <item>
-       <widget class="QLineEdit" name="lineEdit_5">
+       <widget class="QLineEdit" name="input_area_computavel_a_construir_terreo">
         <property name="minimumSize">
          <size>
           <width>0</width>
@@ -211,7 +211,7 @@
        </widget>
       </item>
       <item>
-       <widget class="QLineEdit" name="lineEdit_6">
+       <widget class="QLineEdit" name="input_area_nao_computavel_a_construir_terreo">
         <property name="minimumSize">
          <size>
           <width>0</width>
@@ -238,7 +238,7 @@
        </widget>
       </item>
       <item>
-       <widget class="QLineEdit" name="lineEdit_7">
+       <widget class="QLineEdit" name="input_area_computavel_a_construir_pavSup">
         <property name="minimumSize">
          <size>
           <width>0</width>
@@ -265,7 +265,7 @@
        </widget>
       </item>
       <item>
-       <widget class="QLineEdit" name="lineEdit_8">
+       <widget class="QLineEdit" name="input_area_nao_computavel_a_construir_pavSup">
         <property name="minimumSize">
          <size>
           <width>0</width>
@@ -292,7 +292,7 @@
        </widget>
       </item>
       <item>
-       <widget class="QLineEdit" name="lineEdit_17">
+       <widget class="QLineEdit" name="input_area_nao_computavel_a_construir_atico">
         <property name="minimumSize">
          <size>
           <width>0</width>
@@ -319,7 +319,7 @@
        </widget>
       </item>
       <item>
-       <widget class="QLineEdit" name="lineEdit_18">
+       <widget class="QLineEdit" name="input_area_livre">
         <property name="minimumSize">
          <size>
           <width>0</width>
@@ -346,7 +346,7 @@
        </widget>
       </item>
       <item>
-       <widget class="QLineEdit" name="lineEdit_19">
+       <widget class="QLineEdit" name="input_numero_de_pavimento">
         <property name="minimumSize">
          <size>
           <width>0</width>
@@ -373,7 +373,7 @@
        </widget>
       </item>
       <item>
-       <widget class="QLineEdit" name="lineEdit_20">
+       <widget class="QLineEdit" name="input_altura_total">
         <property name="minimumSize">
          <size>
           <width>0</width>
@@ -400,7 +400,7 @@
        </widget>
       </item>
       <item>
-       <widget class="QLineEdit" name="lineEdit_21">
+       <widget class="QLineEdit" name="input_area_de_cobertura">
         <property name="minimumSize">
          <size>
           <width>0</width>
@@ -464,11 +464,30 @@
     <item row="4" column="0">
      <layout class="QVBoxLayout" name="verticalLayout_2">
       <item>
+       <widget class="QPushButton" name="btn_calcular">
+        <property name="minimumSize">
+         <size>
+          <width>45</width>
+          <height>40</height>
+         </size>
+        </property>
+        <property name="font">
+         <font>
+          <weight>75</weight>
+          <bold>true</bold>
+         </font>
+        </property>
+        <property name="text">
+         <string>CALCULAR ESTATISTICAS</string>
+        </property>
+       </widget>
+      </item>
+      <item>
        <widget class="Line" name="line_3">
         <property name="minimumSize">
          <size>
           <width>0</width>
-          <height>30</height>
+          <height>10</height>
          </size>
         </property>
         <property name="orientation">
