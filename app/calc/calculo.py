@@ -7,9 +7,9 @@ from PyQt5 import uic
 class Calculodora_de_Estatistica:
     def __init__(self):
         self.tela_calculo = uic.loadUi('./pyqt5-templates/calculo.ui')
-        self.calcular_calculo()
+        self.calcular_estatisticas()
 
-    def calcular_calculo(self):
+    def calcular_estatisticas(self):
         print('Calcular')
         
         # Setup inicial
@@ -74,8 +74,7 @@ class Calculodora_de_Estatistica:
         # Coletando dados input do protocolo e do interessado
         numero_do_protocolo = str(self.tela_calculo.input_protocolo.text())
         interessado_projeto = str(self.tela_calculo.input_interessado.text())
-
-        1000
+        
         # Colunas
         planilha1['A2'] = 'Item'
         planilha1['B2'] = 'Descrição'
@@ -85,7 +84,6 @@ class Calculodora_de_Estatistica:
         planilha1['B1'] = data_atual
         planilha1['C1'] = f'Protocolo {numero_do_protocolo}'
         planilha1['D1'] = f'Interessado {interessado_projeto}'
-        
         
         # Passar por todos os dados do dicionarios e adicionar em linhas na planilha
         for item, descricao in enumerate(dicionario_com_resultado):
@@ -117,7 +115,6 @@ class Calculodora_de_Estatistica:
         planilha1['D23'] = '' # Item 21
         planilha1['D24'] = 'M²' # Item 22
         planilha1['D25'] = 'M²' # Item 23
-
 
         try:
             #arquivo_excel.save(f"./calc/relatorios/Relatorio {numero_do_protocolo} - Estatístico.xlsx")
