@@ -15,7 +15,7 @@ class Email:
         email = outlook.CreateItem(0)
 
         # configurar as informações
-        email.To = 
+        email.To = ''
         email.Subject = ''
 
         if email.To == '':
@@ -34,6 +34,10 @@ class Email:
         if nome == '' and sobrenome != '':
             nome = 'Sr (a).'
 
+              
+        #anexo = fr'app\email\anexos\legenda-pmcm.dwg'
+        #anexo = fr'./anexos/legenda-pmcm.dwg'
+    
         # adicionando anexo
         def anexar_documento(nome_arquivo):
             if nome_arquivo == '':
