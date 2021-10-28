@@ -6,6 +6,7 @@ from openpyxl import Workbook
 
 
 class SistemaGeral:
+    ### INICIO
     def __init__(self):
         ### SETUP LAYOUT APP
         # Chamando sistema Layout
@@ -67,9 +68,9 @@ class SistemaGeral:
 
         # Executar sistema
         app.exec_()
-    
 
-    
+
+
     ### LOGIN
     def logar_login(self):
         # Coleta dados dos input
@@ -87,8 +88,9 @@ class SistemaGeral:
 
     def cadastrar_login(self):
         print('Cadastrar')
-        
-        
+
+
+
     ### GERAL         
     def projetos_geral(self):
         print('Projetos')
@@ -96,35 +98,35 @@ class SistemaGeral:
         # Fecha Geral e abre Projetos
         self.tela_geral.close()
         self.tela_projetos.show()
-        
+
     def email_geral(self):
         print('Email')
 
         # Fecha Geral e abre Email
         self.tela_geral.close()
         self.tela_email.show()
-        
+
     def calculo_geral(self):
         print('Calculo de Estatistica')
 
         # Fecha Geral e abre Calculo
         self.tela_geral.close()
         self.tela_calculo.show()
-        
+
     def analise_geral(self):
         print('Analise')
 
         # Fecha Geral e abre Analise
         self.tela_geral.close()
-        self.tela_analise.show()
-        
-        
+        self.tela_analise.show()    
+
     def voltar_geral(self):
         print('Deslogar')
 
         # Fecha Geral e abre Login
         self.tela_geral.close()
         self.tela_login.show()
+
 
 
     ### PROJETOS
@@ -137,16 +139,15 @@ class SistemaGeral:
 
     def situacao_projetos(self):
         print('Situação')
-        
+
     def cadastros_projetos(self):
         print('Cadastros')
-        
+
     def anteriores_projetos(self):
         print('Anteriores')
 
     def entrega_projetos(self):
-        print('Entrega')
-    
+        print('Entrega')  
    
     def voltar_projetos(self):
         print('Voltar')
@@ -154,6 +155,7 @@ class SistemaGeral:
         # Fecha Projetos e abre Geral
         self.tela_projetos.close()
         self.tela_geral.show()
+
 
 
     ### PROJETO - RESUMO
@@ -164,9 +166,9 @@ class SistemaGeral:
         self.tela_projetos_resumo.close()
         self.tela_projetos.show()
 
+
+
     ### EMAIL
-    
-    
     def enviar_email(self):
         
             self.tela_email = uic.loadUi('./pyqt5-templates/email.ui')
@@ -353,6 +355,7 @@ class SistemaGeral:
         self.tela_geral.show()
 
 
+
     ### CALCULO
     def calcular_estatisticas(self):
         print('Calcular')
@@ -466,7 +469,7 @@ class SistemaGeral:
             print('Relatorio gerado com sucesso')
         except:
             print("Erro ao salvar o Relatório.")
-            
+    
     def voltar_calculo(self):
         print('Voltar')
         
@@ -474,9 +477,9 @@ class SistemaGeral:
         self.tela_calculo.close()
         self.tela_geral.show()
 
-    
-    # ANALISES
-    
+
+
+    ### ANALISES
     def voltar_analise(self):
         print('Voltar')
 
