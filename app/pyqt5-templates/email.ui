@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>371</width>
-    <height>434</height>
+    <height>361</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -33,30 +33,6 @@
       </item>
       <item>
        <widget class="QLineEdit" name="input_email">
-        <property name="minimumSize">
-         <size>
-          <width>0</width>
-          <height>35</height>
-         </size>
-        </property>
-       </widget>
-      </item>
-      <item>
-       <widget class="QLabel" name="label_3">
-        <property name="font">
-         <font>
-          <pointsize>10</pointsize>
-          <weight>75</weight>
-          <bold>true</bold>
-         </font>
-        </property>
-        <property name="text">
-         <string>TITULO DA MENSAGEM</string>
-        </property>
-       </widget>
-      </item>
-      <item>
-       <widget class="QLineEdit" name="input_titulo">
         <property name="minimumSize">
          <size>
           <width>0</width>
@@ -123,7 +99,7 @@
         <property name="minimumSize">
          <size>
           <width>0</width>
-          <height>30</height>
+          <height>20</height>
          </size>
         </property>
         <property name="orientation">

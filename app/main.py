@@ -17,6 +17,7 @@ class SistemaGeral:
         self.tela_projetos = uic.loadUi('./pyqt5-templates/projetos.ui')
         self.tela_email = uic.loadUi('./pyqt5-templates/email.ui')
         self.tela_calculo = uic.loadUi('./pyqt5-templates/calculo.ui')
+        self.tela_analise = uic.loadUi('./pyqt5-templates/analise.ui')
 
         # Layouts's Projetos        
         self.tela_projetos_resumo = uic.loadUi('./pyqt5-templates/projetos-resumo.ui')
@@ -27,9 +28,14 @@ class SistemaGeral:
         self.tela_login.btn_cadastrar.clicked.connect(self.cadastrar_login) # botao cadastrar        
         
         ### TELA GERAL BOTOES
+        ### Linha 1
         self.tela_geral.btn_projetos.clicked.connect(self.projetos_geral) # botao projetos
         self.tela_geral.btn_email.clicked.connect(self.email_geral) # botao email
         self.tela_geral.btn_calc.clicked.connect(self.calculo_geral) # botao calculo
+        
+        ### Linha 2
+        self.tela_geral.btn_analise.clicked.connect(self.analise_geral) # botao analise
+        
         self.tela_geral.btn_voltar.clicked.connect(self.voltar_geral) # botao voltar
 
         ### TELA PROJETOS BOTOES
@@ -50,6 +56,9 @@ class SistemaGeral:
         ### TELA CALCULO BOTOES 
         self.tela_calculo.btn_calcular.clicked.connect(self.calcular_estatisticas) # botao calcular
         self.tela_calculo.btn_voltar.clicked.connect(self.voltar_calculo) # botao voltar
+
+        ### TELA ANALSIE BOTOES
+        self.tela_analise.btn_voltar.clicked.connect(self.voltar_analise) # botao voltar
 
         ### SETUP
 
@@ -101,6 +110,14 @@ class SistemaGeral:
         # Fecha Geral e abre Calculo
         self.tela_geral.close()
         self.tela_calculo.show()
+        
+    def analise_geral(self):
+        print('Analise')
+
+        # Fecha Geral e abre Analise
+        self.tela_geral.close()
+        self.tela_analise.show()
+        
         
     def voltar_geral(self):
         print('Deslogar')
@@ -159,16 +176,15 @@ class SistemaGeral:
             outlook = win32.Dispatch('outlook.application')
 
             # criar um email
-            email = outlook.CreateItem(0)
-            
+            email = outlook.CreateItem(0)     
             
             # configurar as informações
             email.To = 'jose.marinho56@gmail.com'
-            email.Subject = 'Teste'
+            email.Subject = 'Prefeitura Municipal de Campo Magro - Modelo Carimbo'
             
             # variváveis
-            ### nome = self.tela_email.input_email.text()
-            ### sobrenome = str(input('Sobrenome: '))
+            nome = self.tela_email.input_nome.text()
+            sobrenome = self.tela_email.input_snome.text()
             # adicionando anexo
             anexo = r'E:\Python\app-pyqt5\app\emaildef\anexos\legenda-pmcm.dwg'
             
@@ -179,14 +195,157 @@ class SistemaGeral:
                 email.Attachments.Add(anexo)
                 print('Sem Anexo...')
             
-            email.HTMLBody = 'Segue em Anexo'
+            css = '''
+                        <style>
+                        * {
+                            margin: 0;
+                            padding: 0;
+                            box-sizing: border-box;
+                        }
+
+                        body {
+                            width: 100%;
+                            overflow-x: hidden;
+                        }
+
+                        .email {
+                            margin: 2%;
+                        }
+
+                        .topo {
+                            padding: 0.3rem 0; 
+                            background-color: brown;
+                            width: 100%;
+                            text-align: center !important;
+                            margin-bottom: 35px;
+                            font-family: Arial, Helvetica, sans-serif;
+                        }
+
+                        .topo h2 {
+                            font-size: 28px;
+                            color: white;
+                            padding-top: 25px;
+                        }
+
+                        img {
+                            width: 80px;
+                            height: 80px;
+                        }
+
+                        .capa {
+                            text-align: center;
+                            width: 100%;
+                            padding: 0.5rem 0;
+                            background-color: cadetblue;
+                        }
+                        .capa p {
+                            font-size: 16px;
+                            font-family: Arial, Helvetica, sans-serif;
+                            color: white;
+                            text-align: left !important;
+                            padding: 0 30px;
+                        }
+
+                        .conteudo {
+                            text-align: center;
+                            width: 100%;
+                            padding: 2rem;
+                            background-color: gainsboro;
+                        }
+
+                        .conteudo p{
+                            font-size: 20px;
+                            font-family: Arial, Helvetica, sans-serif;
+                        }
+
+                        .conteudo p a {
+                            text-decoration: none;
+                            color: red;
+                        }
+
+                        .assinatura {
+                            background-color: royalblue;
+                            color: white;
+                            font-family: Arial, Helvetica, sans-serif;
+                            margin-top: 20px;
+                            padding: 2%;
+                        }
+                       </style>
+                        '''
+
+            assinatura = '''
+                <div class="assinatura">
+                    <p>Atenciosamente,</p>
+                        <br>
+                        <br>
+                    <h3>Jose Marinho</h3>
+                        <br>
+                    <p><a style="color: white;" href="https://wa.me/qr/LQM5O2QPPRDOH1">Whatsapp: (41) 9 9272-5388</a></p>
+                    <p>Telefone: (41) 3677-4000 - Central Prefeitura</p>
+                    <p>Telefone: (41) 3677-4050 - SEDUA</p>
+                    <p style="color: white;">jm.arquiteturacwb@gmail.com</p>
+                    <p>Prefeitura Municipal de Campo Magro / PR</p>
+                </div>
+                '''
+
+            topo = '''
+                <div class="topo">
+                    <img src="https://leismunicipais.com.br/img/cidades/pr/campo-magro.png" alt="campo-magro">
+                    <h2>Prefeitura Municipal de Campo Magro - SEDUA</h2>
+                </div> <!--topo-->
+                '''
+
+            conteudo = f'''
+                <div class="conteudo">
+                    <p>Bom dia {nome} {sobrenome},</p>
+                    <br>
+                    <p>Entro em contato para atender a sua solicitação</p> 
+                    <br>
+                    <p>Está anexado a esse mensagem, um arquivo em dwg, onde o mesmo contém a estrutura de carimbo padrão da prefeitura, logo, a tabela de estatística está junto.</p> 
+                    <br>
+                    <p>Nome do arquivo: <b>legenda-pmcm.dwg</b></p>
+                    <p>Tamanho do arquivo: <b>75,3 KB</b></p>
+                    <p>Caso eu não tenha esclarecido totalmente a sua dúvida, estou à disposição</p>
+                </div>
+                '''
             
+            capa = '''
+                <div class="capa">
+                    <p>Atendimento via E-mail - A/C: <b>José Marinho - Estagiário</b></p>
+                </div> <!--capa-->
+                '''
+
+            email.HTMLBody = f'''
+                <!DOCTYPE html>
+                <html>
+                    <head>
+                        <meta charset="utf-8">
+                        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+                        <meta name="viewport" content="width=device-width, initial-scale=1">
+                        {css}
+                    </head>
+                    <body>
+                        <section class="email">
+
+                            {topo}
+
+                            {capa}
+
+                            {conteudo}
+
+                            {assinatura}
+
+                        </section>
+                    </body>
+                </html>
+
+                '''
+            # body
+      
             # finalizando email
             email.Send()
 
     def voltar_email(self):
-        
-
         print('Voltar')
 
         # Fecha Email e abre Geral
@@ -315,6 +474,15 @@ class SistemaGeral:
         self.tela_calculo.close()
         self.tela_geral.show()
 
+    
+    # ANALISES
+    
+    def voltar_analise(self):
+        print('Voltar')
+
+        # Fecha Analise e abre Geral
+        self.tela_analise.close()
+        self.tela_geral.show()
 
 SistemaGeral()
 ### jose.marinho56@gmail.com
