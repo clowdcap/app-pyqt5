@@ -69,7 +69,9 @@ class SistemaGeral:
         # Executar sistema
         app.exec_()
 
-
+    ### CRIAR BANCO DE DADOS
+    ### CRIAR TABELA USER
+    ### SISTEMA DE LOGIN
 
     ### LOGIN
     def logar_login(self):
@@ -88,7 +90,6 @@ class SistemaGeral:
 
     def cadastrar_login(self):
         print('Cadastrar')
-
 
 
     ### GERAL         
@@ -128,7 +129,6 @@ class SistemaGeral:
         self.tela_login.show()
 
 
-
     ### PROJETOS
     def resumo_projetos(self):
         print('Resumo')
@@ -157,7 +157,6 @@ class SistemaGeral:
         self.tela_geral.show()
 
 
-
     ### PROJETO - RESUMO
     def voltar_projetos_resumo(self):
         print('Voltar')
@@ -167,185 +166,184 @@ class SistemaGeral:
         self.tela_projetos.show()
 
 
-
     ### EMAIL
     def enviar_email(self):
         
-            self.tela_email = uic.loadUi('./pyqt5-templates/email.ui')
-            print('E-Mail')
-            
-            # criar integração com o outlook
-            outlook = win32.Dispatch('outlook.application')
+        self.tela_email = uic.loadUi('./pyqt5-templates/email.ui')
+        print('E-Mail')
+        
+        # criar integração com o outlook
+        outlook = win32.Dispatch('outlook.application')
 
-            # criar um email
-            email = outlook.CreateItem(0)     
-            
-            # configurar as informações
-            email.To = 'jose.marinho56@gmail.com'
-            email.Subject = 'Prefeitura Municipal de Campo Magro - Modelo Carimbo'
-            
-            # variváveis
-            nome = self.tela_email.input_nome.text()
-            sobrenome = self.tela_email.input_snome.text()
-            # adicionando anexo
-            anexo = r'E:\Python\app-pyqt5\app\emaildef\anexos\legenda-pmcm.dwg'
-            
-            try:
-                email.Attachments.Add(anexo)
-                print('Anexado documento...')
-            except:
-                email.Attachments.Add(anexo)
-                print('Sem Anexo...')
-            
-            css = '''
-                        <style>
-                        * {
-                            margin: 0;
-                            padding: 0;
-                            box-sizing: border-box;
-                        }
+        # criar um email
+        email = outlook.CreateItem(0)     
+        
+        # configurar as informações
+        email.To = 'jose.marinho56@gmail.com'
+        email.Subject = 'Prefeitura Municipal de Campo Magro - Modelo Carimbo'
+        
+        # variváveis
+        self.nome = self.tela_email.input_nome.text()
+        self.sobrenome = self.tela_email.input_snome.text()
+        # adicionando anexo
+        anexo = r'E:\Python\app-pyqt5\app\emaildef\anexos\legenda-pmcm.dwg'
+        
+        try:
+            email.Attachments.Add(anexo)
+            print('Anexado documento...')
+        except:
+            email.Attachments.Add(anexo)
+            print('Sem Anexo...')
+        
+        css = '''
+                    <style>
+                    * {
+                        margin: 0;
+                        padding: 0;
+                        box-sizing: border-box;
+                    }
 
-                        body {
-                            width: 100%;
-                            overflow-x: hidden;
-                        }
+                    body {
+                        width: 100%;
+                        overflow-x: hidden;
+                    }
 
-                        .email {
-                            margin: 2%;
-                        }
+                    .email {
+                        margin: 2%;
+                    }
 
-                        .topo {
-                            padding: 0.3rem 0; 
-                            background-color: brown;
-                            width: 100%;
-                            text-align: center !important;
-                            margin-bottom: 35px;
-                            font-family: Arial, Helvetica, sans-serif;
-                        }
+                    .topo {
+                        padding: 0.3rem 0; 
+                        background-color: brown;
+                        width: 100%;
+                        text-align: center !important;
+                        margin-bottom: 35px;
+                        font-family: Arial, Helvetica, sans-serif;
+                    }
 
-                        .topo h2 {
-                            font-size: 28px;
-                            color: white;
-                            padding-top: 25px;
-                        }
+                    .topo h2 {
+                        font-size: 28px;
+                        color: white;
+                        padding-top: 25px;
+                    }
 
-                        img {
-                            width: 80px;
-                            height: 80px;
-                        }
+                    img {
+                        width: 80px;
+                        height: 80px;
+                    }
 
-                        .capa {
-                            text-align: center;
-                            width: 100%;
-                            padding: 0.5rem 0;
-                            background-color: cadetblue;
-                        }
-                        .capa p {
-                            font-size: 16px;
-                            font-family: Arial, Helvetica, sans-serif;
-                            color: white;
-                            text-align: left !important;
-                            padding: 0 30px;
-                        }
+                    .capa {
+                        text-align: center;
+                        width: 100%;
+                        padding: 0.5rem 0;
+                        background-color: cadetblue;
+                    }
+                    .capa p {
+                        font-size: 16px;
+                        font-family: Arial, Helvetica, sans-serif;
+                        color: white;
+                        text-align: left !important;
+                        padding: 0 30px;
+                    }
 
-                        .conteudo {
-                            text-align: center;
-                            width: 100%;
-                            padding: 2rem;
-                            background-color: gainsboro;
-                        }
+                    .conteudo {
+                        text-align: center;
+                        width: 100%;
+                        padding: 2rem;
+                        background-color: gainsboro;
+                    }
 
-                        .conteudo p{
-                            font-size: 20px;
-                            font-family: Arial, Helvetica, sans-serif;
-                        }
+                    .conteudo p{
+                        font-size: 20px;
+                        font-family: Arial, Helvetica, sans-serif;
+                    }
 
-                        .conteudo p a {
-                            text-decoration: none;
-                            color: red;
-                        }
+                    .conteudo p a {
+                        text-decoration: none;
+                        color: red;
+                    }
 
-                        .assinatura {
-                            background-color: royalblue;
-                            color: white;
-                            font-family: Arial, Helvetica, sans-serif;
-                            margin-top: 20px;
-                            padding: 2%;
-                        }
-                       </style>
-                        '''
+                    .assinatura {
+                        background-color: royalblue;
+                        color: white;
+                        font-family: Arial, Helvetica, sans-serif;
+                        margin-top: 20px;
+                        padding: 2%;
+                    }
+                    </style>
+                    '''
 
-            assinatura = '''
-                <div class="assinatura">
-                    <p>Atenciosamente,</p>
-                        <br>
-                        <br>
-                    <h3>Jose Marinho</h3>
-                        <br>
-                    <p><a style="color: white;" href="https://wa.me/qr/LQM5O2QPPRDOH1">Whatsapp: (41) 9 9272-5388</a></p>
-                    <p>Telefone: (41) 3677-4000 - Central Prefeitura</p>
-                    <p>Telefone: (41) 3677-4050 - SEDUA</p>
-                    <p style="color: white;">jm.arquiteturacwb@gmail.com</p>
-                    <p>Prefeitura Municipal de Campo Magro / PR</p>
-                </div>
-                '''
-
-            topo = '''
-                <div class="topo">
-                    <img src="https://leismunicipais.com.br/img/cidades/pr/campo-magro.png" alt="campo-magro">
-                    <h2>Prefeitura Municipal de Campo Magro - SEDUA</h2>
-                </div> <!--topo-->
-                '''
-
-            conteudo = f'''
-                <div class="conteudo">
-                    <p>Bom dia {nome} {sobrenome},</p>
+        assinatura = '''
+            <div class="assinatura">
+                <p>Atenciosamente,</p>
                     <br>
-                    <p>Entro em contato para atender a sua solicitação</p> 
                     <br>
-                    <p>Está anexado a esse mensagem, um arquivo em dwg, onde o mesmo contém a estrutura de carimbo padrão da prefeitura, logo, a tabela de estatística está junto.</p> 
+                <h3>Jose Marinho</h3>
                     <br>
-                    <p>Nome do arquivo: <b>legenda-pmcm.dwg</b></p>
-                    <p>Tamanho do arquivo: <b>75,3 KB</b></p>
-                    <p>Caso eu não tenha esclarecido totalmente a sua dúvida, estou à disposição</p>
-                </div>
-                '''
-            
-            capa = '''
-                <div class="capa">
-                    <p>Atendimento via E-mail - A/C: <b>José Marinho - Estagiário</b></p>
-                </div> <!--capa-->
-                '''
+                <p><a style="color: white; text-decoration: underline overline wavy green" href="https://wa.me/qr/LQM5O2QPPRDOH1">Whatsapp: (41) 9 9272-5388</a></p>
+                <p>Telefone: (41) 3677-4000 - Central Prefeitura</p>
+                <p>Telefone: (41) 3677-4050 - SEDUA</p>
+                <p style="color: white; text-decoration: none;">jose.marinho56@gmail.com</p>
+                <p>Prefeitura Municipal de Campo Magro / PR</p>
+            </div>
+            '''
 
-            email.HTMLBody = f'''
-                <!DOCTYPE html>
-                <html>
-                    <head>
-                        <meta charset="utf-8">
-                        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-                        <meta name="viewport" content="width=device-width, initial-scale=1">
-                        {css}
-                    </head>
-                    <body>
-                        <section class="email">
+        topo = '''
+            <div class="topo">
+                <img src="https://leismunicipais.com.br/img/cidades/pr/campo-magro.png" alt="campo-magro">
+                <h2>Prefeitura Municipal de Campo Magro - SEDUA</h2>
+            </div> <!--topo-->
+            '''
 
-                            {topo}
+        conteudo = f'''
+            <div class="conteudo">
+                <p>Bom dia {self.nome} {self.sobrenome},</p>
+                <br>
+                <p>Entro em contato para atender a sua solicitação</p> 
+                <br>
+                <p>Está anexado a esse mensagem, um arquivo em dwg, onde o mesmo contém a estrutura de carimbo padrão da prefeitura, logo, a tabela de estatística está junto.</p> 
+                <br>
+                <p>Nome do arquivo: <b>legenda-pmcm.dwg</b></p>
+                <p>Tamanho do arquivo: <b>75,3 KB</b></p>
+                <p>Caso eu não tenha esclarecido totalmente a sua dúvida, estou à disposição</p>
+            </div>
+            '''
 
-                            {capa}
+        capa = '''
+            <div class="capa">
+                <p>Atendimento via E-mail - A/C: <b>José Marinho - Estagiário</b></p>
+            </div> <!--capa-->
+            '''
 
-                            {conteudo}
+        email.HTMLBody = f'''
+            <!DOCTYPE html>
+            <html>
+                <head>
+                    <meta charset="utf-8">
+                    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+                    <meta name="viewport" content="width=device-width, initial-scale=1">
+                    {css}
+                </head>
+                <body>
+                    <section class="email">
 
-                            {assinatura}
+                        {topo}
 
-                        </section>
-                    </body>
-                </html>
+                        {capa}
 
-                '''
-            # body
-      
-            # finalizando email
-            email.Send()
+                        {conteudo}
+
+                        {assinatura}
+
+                    </section>
+                </body>
+            </html>
+
+            '''
+        # body
+    
+        # finalizando email
+        email.Send()
 
     def voltar_email(self):
         print('Voltar')
@@ -353,7 +351,6 @@ class SistemaGeral:
         # Fecha Email e abre Geral
         self.tela_email.close()
         self.tela_geral.show()
-
 
 
     ### CALCULO
@@ -476,7 +473,6 @@ class SistemaGeral:
         # Fecha Calculo e abre Geral
         self.tela_calculo.close()
         self.tela_geral.show()
-
 
 
     ### ANALISES
