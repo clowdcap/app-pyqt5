@@ -183,8 +183,8 @@ class SistemaGeral:
         email.Subject = 'Prefeitura Municipal de Campo Magro - Modelo Carimbo'
         
         # variváveis
-        self.nome = self.tela_email.input_nome.text()
-        self.sobrenome = self.tela_email.input_snome.text()
+        self.nome_email = self.tela_email.input_nome.text()
+        self.sobrenome_email = self.tela_email.input_snome.text()
         # adicionando anexo
         anexo = r'E:\Python\app-pyqt5\app\emaildef\anexos\legenda-pmcm.dwg'
         
@@ -297,7 +297,7 @@ class SistemaGeral:
 
         conteudo = f'''
             <div class="conteudo">
-                <p>Bom dia {self.nome} {self.sobrenome},</p>
+                <p>Bom dia {self.nome_email} {self.sobrenome_email},</p>
                 <br>
                 <p>Entro em contato para atender a sua solicitação</p> 
                 <br>
@@ -343,7 +343,11 @@ class SistemaGeral:
         # body
     
         # finalizando email
-        email.Send()
+        try:
+            email.Send()
+            print('E-mail encaminhado com sucesso')        
+        except:
+            print('Algo deu errado')
 
     def voltar_email(self):
         print('Voltar')
@@ -351,7 +355,6 @@ class SistemaGeral:
         # Fecha Email e abre Geral
         self.tela_email.close()
         self.tela_geral.show()
-
 
     ### CALCULO
     def calcular_estatisticas(self):
