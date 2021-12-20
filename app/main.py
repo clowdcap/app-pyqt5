@@ -179,7 +179,7 @@ class SistemaGeral:
         email = outlook.CreateItem(0)     
         
         # configurar as informações
-        email.To = 'jose.marinho56@gmail.com'
+        email.To = self.tela_email.input_email.text()
         email.Subject = 'Prefeitura Municipal de Campo Magro - Modelo Carimbo'
         
         # variváveis
