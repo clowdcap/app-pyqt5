@@ -2,7 +2,7 @@ from PyQt5 import uic, QtWidgets
 from datetime import date
 import win32com.client as win32
 from openpyxl import Workbook
-
+import pandas as pd
 
 
 class SistemaGeral:
@@ -23,6 +23,12 @@ class SistemaGeral:
         # Layouts's Projetos        
         self.tela_projetos_resumo = uic.loadUi('./pyqt5-templates/projetos-resumo.ui')
 
+
+
+
+
+
+
         # Executar funções ao chamar
         ### TELA LOGIN BOTOES
         self.tela_login.btn_login.clicked.connect(self.logar_login) # botao logar
@@ -36,7 +42,7 @@ class SistemaGeral:
         
         ### Linha 2
         self.tela_geral.btn_analise.clicked.connect(self.analise_geral) # botao analise
-        
+
         self.tela_geral.btn_voltar.clicked.connect(self.voltar_geral) # botao voltar
 
         ### TELA PROJETOS BOTOES
@@ -66,7 +72,7 @@ class SistemaGeral:
         # Mostrar layout
         self.tela_login.show()
 
-        # Executar sistema
+        # Executar sistemax``
         app.exec_()
 
     ### CRIAR BANCO DE DADOS
@@ -95,7 +101,9 @@ class SistemaGeral:
     ### GERAL         
     def projetos_geral(self):
         print('Projetos')
-        
+        self.tabela = self.tela_projetos_resumo.tabelaResumo
+        self.base_de_dados = pd.read_csv('./projetos/csv/DB_PMCM.csv')
+
         # Fecha Geral e abre Projetos
         self.tela_geral.close()
         self.tela_projetos.show()
@@ -132,7 +140,8 @@ class SistemaGeral:
     ### PROJETOS
     def resumo_projetos(self):
         print('Resumo')
-
+    
+        self.tela_projetos_resumo.tabelaResumo
         # Fecha Projetos e abre Resumo
         self.tela_projetos.close()
         self.tela_projetos_resumo.show()
