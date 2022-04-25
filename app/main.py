@@ -195,7 +195,7 @@ class SistemaGeral:
         self.nome_email = self.tela_email.input_nome.text()
         self.sobrenome_email = self.tela_email.input_snome.text()
         # adicionando anexo
-        anexo = r'E:\Python\app-pyqt5\app\emaildef\anexos\legenda-pmcm.dwg'
+        anexo = r'D:\Development\Python\app-pyqt5\app\emaildef\anexos\legenda-pmcm.dwg'
         
         try:
             email.Attachments.Add(anexo)
@@ -355,8 +355,8 @@ class SistemaGeral:
         try:
             email.Send()
             print('E-mail encaminhado com sucesso')        
-        except:
-            print('Algo deu errado')
+        except Exception as error:
+            print(f'Algo deu errado\nErro: {error}')
 
     def voltar_email(self):
         print('Voltar')
